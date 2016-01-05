@@ -1,16 +1,12 @@
 .transition-properties(...) {
-  @value: ~`"@{arguments}".replace(/[\[\]]|\,\sX/g, '')`;
-
-  -webkit-transition: @value;
-  -moz-transition: @value;
-  -o-transition: @value;
-  transition: @value;
+  -webkit-transition: @arguments;
+  -moz-transition: @arguments;
+  -o-transition: @arguments;
+  transition: @arguments;
 }
 
 .transform(...) {
-  @value: ~`"@{arguments}".replace(/[\[\]]|\,\sX/g, '')`;
-
-  -webkit-transform: @value;
-  -moz-transform: @value;
-  transform: @value;
+  -webkit-transform: @arguments;
+  -moz-transform: @arguments;
+  transform: @arguments;
 }
