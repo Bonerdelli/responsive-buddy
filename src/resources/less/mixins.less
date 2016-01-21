@@ -11,8 +11,21 @@
   transform: @arguments;
 }
 
+.box-shadow(...) {
+  -webkit-box-shadow: @arguments;
+  -moz-box-shadow: @arguments;
+  box-shadow: @arguments;
+}
+
 .no-box-shadow() {
   -webkit-appearance: none;
   -webkit-box-shadow: none !important;
   box-shadow: none !important;
+}
+
+.animation(...) {
+  -webkit-animation: @arguments;
+  -moz-animation: @arguments;
+  -o-animation: @arguments;
+  animation: @arguments;
 }
