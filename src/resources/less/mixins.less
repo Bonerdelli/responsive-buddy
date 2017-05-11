@@ -29,3 +29,44 @@
   -o-animation: @arguments;
   animation: @arguments;
 }
+
+
+
+// New redesign MXINS:
+
+
+
+/*
+    Usage: 
+    
+    @pallete: 
+      red #ff4040,
+      purple #5f4ed8,
+      goldy gold;
+*/
+.make-classes(@attribute, @list, @plus: false) {
+    .iter(length(@list));
+  
+    .iter(@i) when (@i > 0) {
+        .iter(@i - 1);
+        @pair:  extract(@list, @i); 
+        @key:   extract(@pair, 1);
+        @value: extract(@pair, 2); 
+      
+      	@first: extract(@attribute, 0);
+        .@{key} when not (@plus = true){
+            @{attribute}: @value;
+          	@first : @value;
+        }
+        &.@{key} when (@plus = true){
+            @{attribute}: @value;
+          	@first : @value;
+        }
+    }
+}
+
+
+.gradient(@color1, @color2, @percent: 30%){
+  @percentnew : unit(@percent, %);
+  	background: linear-gradient(45deg, @color1 @percentnew, @color2 100%);
+}
