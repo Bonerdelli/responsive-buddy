@@ -1,0 +1,267 @@
+@import "vars.less";
+
+/**
+ * Flexbox-based 12-columns grid
+ * Based on this good project https://github.com/kristoferjoseph/flexboxgrid
+ * Made without column paddings. Uses min-width breakpoints instead max-width
+ * @author Andrey Nekrasov <bonerdelli@gmail.com>
+ * @package spent-web-client
+ */
+
+@columns: 12;
+@start-size: ~'xs';
+
+// Grid uses mobile-first breakpoints
+// eg. from min-width to inf.
+@grid-min-sizes:
+  sm @media-sm-min,
+  md @media-md-min,
+  lg @media-lg-min,
+  xl @media-xl-min
+;
+
+// But columns re-ordering classes
+// uses breakpoints from 0 to max-width
+@grid-max-sizes:
+  xs @media-xs-max,
+  sm @media-sm-max,
+  md @media-md-max,
+  lg @media-lg-max
+;
+
+/**
+ * Base grid classes
+ */
+
+.container,
+.container-fluid {
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.row,
+.flex {
+  box-sizing: border-box;
+  display: flex;
+  flex-grow: 0;
+  flex-shrink: 1;
+  flex-basis: auto;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+/**
+ * Mixins for a grid columns
+ */
+
+.grid-column-base-classes() {
+  box-sizing: border-box;
+  flex-grow: 0;
+  flex-shrink: 0;
+  flex-basis: auto;
+}
+
+.grid-column-full-width() {
+  flex-grow: 1;
+  flex-basis: 0;
+  max-width: 100%;
+}
+
+.grid-generate-column-classes(@width) {
+  .grid-column-base-classes();
+  flex-basis: @width;
+  max-width: @width;
+}
+
+.grid-generate-column-classes(@width, @fixed) {
+  .grid-column-base-classes();
+  flex-basis: @width;
+  min-width: @width;
+}
+
+.grid-generate-order-classes(@size, @n, @i: 1) when (@i <= @n) {
+  .order-max@{size}-@{i} {
+    order: @i;
+  }
+  // Continue cycle
+  .grid-generate-order-classes(@size, @n, (@i + 1));
+}
+
+/**
+ * Generate grid for a size mixin
+ */
+
+.grid-generate(@size) {
+  // Columns for @{size}
+  .col@{size} {
+    .grid-column-full-width();
+  }
+  .col@{size}-auto {
+    max-width: none;
+    min-width: auto;
+    flex-basis: auto;
+  }
+  .col@{size}-offset-0,
+  .col@{size}-offset-none {
+    margin-left: 0;
+  }
+  .grid-generate-columns(@size, @columns);
+  // Offsets for @{size}
+  .col@{size}-offset-0 {
+    .grid-column-base-classes();
+    margin-left: 0;
+  }
+  .grid-generate-offsets(@size, @columns);
+  // Helpers for @{size}
+  .grid-generate-helpers(@size);
+  // TODO: think about this and maybe implement?
+  // Table-like rows, stretchable and without wrapping
+  // In this way only minimal width fixed
+  /* .fixed-row {
+    .grid-generate-columns(@size, @columns, true);
+  } */
+}
+
+/**
+ * Columns generaion cycle
+ */
+
+.grid-generate-columns(@size, @n, @fixed: false, @i: 1) when (@i =< @n) {
+  @width: (@i * 100% / @n);
+  .col@{size}-@{i} {
+    .grid-generate-column-classes(@width, @fixed);
+  }
+  .col@{size}-offset-@{i} {
+    margin-left: @width;
+  }
+  // Continue cycle
+  .grid-generate-columns(@size, @n, @fixed, (@i + 1));
+}
+
+/**
+ * Offsets generaion cycle
+ */
+
+.grid-generate-offsets(@size, @n, @i: 1) when (@i < @n) {
+  // NOTE: a last column will omit,
+  // it is pointless because produces an empty row
+  @width: (@i * 100% / @n);
+  .col@{size}-offset-@{i} {
+    margin-left: @width;
+  }
+  // Continue cycle
+  .grid-generate-offsets(@size, @n, (@i + 1));
+}
+
+/**
+ * Helpers generaion mixin
+ * TODO: classes without size postfix, e.g.
+ * .fixed, .centered
+ */
+
+.grid-generate-helpers(@size) {
+
+  .row,
+  .flex {
+    // Flow changing
+    &.fixed@{size} {
+      flex-wrap: nowrap;
+    }
+    &.reverse@{size} {
+      flex-direction: row-reverse;
+    }
+    &.vertical@{size} {
+      flex-direction: column;
+      &.reverse {
+        flex-direction: column-reverse;
+      }
+    }
+
+    // Breakpoints-based aligning
+    &.centered@{size} {
+      align-items: center;
+      justify-content: center;
+    }
+    &.justify-start@{size} {
+      justify-content: flex-start;
+      text-align: start;
+    }
+    &.justify-center@{size} {
+      justify-content: center;
+      text-align: center;
+    }
+    &.justify-end@{size} {
+      justify-content: flex-end;
+      text-align: end;
+    }
+    &.align-start@{size} {
+      align-items: flex-start;
+    }
+    &.align-center@{size} {
+      align-items: center;
+    }
+    &.align-end@{size} {
+      align-items: flex-end;
+    }
+    &.space-around@{size} {
+      justify-content: space-around;
+    }
+    &.space-between@{size} {
+      justify-content: space-between;
+    }
+  }
+
+  .col {
+    // Ordering
+    // TODO: make re-ordering,
+    // like in Foundation framework
+    &.first@{size} {
+      order: -1;
+    }
+    &.last@{size} {
+      order: 1;
+    }
+    &.stretched@{size} {
+      flex-grow: 1;
+    }
+  }
+
+}
+
+/**
+ * Grid generation
+ */
+
+// Generate base grid & helpers without size definition
+.grid-generate-helpers(e(""));
+
+// Generate grid for start size (mobile-first)
+.grid-generate(e("-@{start-size}"));
+
+// Generate grids for defined sizes
+.iterate-min-sizes(length(@grid-min-sizes));
+.iterate-min-sizes(@n, @i: 1) when (@i <= @n) {
+  @pair: extract(@grid-min-sizes, @i);
+  @size: extract(@pair, 1);
+  @query: extract(@pair, 2);
+  @media @query {
+    .grid-generate(e("-@{size}"));
+  }
+  .iterate-min-sizes(@n, (@i + 1));
+}
+
+// Iterate defined max-sizes
+// NOTE: using breakpoints from 0 to max-width
+.iterate-max-sizes(length(@grid-max-sizes));
+.iterate-max-sizes(@n, @i: 1) when (@i <= @n) {
+  @pair: extract(@grid-max-sizes, @i);
+  @size: extract(@pair, 1);
+  @query: extract(@pair, 2);
+  @media @query {
+    // Generate classes for ordered columns
+    .grid-generate-order-classes(e("-@{size}"), @columns);
+    // Generate non-mobile-first helpers
+    .grid-generate-helpers(e("-@{size}-max"));
+  }
+  .iterate-max-sizes(@n, (@i + 1));
+}
