@@ -223,6 +223,9 @@
     }
     &.stretched@{size} {
       flex-grow: 1;
+      // Using of flex-shrink prevents overflow,
+      // when content in stretched column is too long
+      flex-shrink: 1;
     }
     // Self-aligning
     &.align-start@{size} {
