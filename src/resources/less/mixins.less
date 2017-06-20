@@ -131,15 +131,3 @@
     }
   }
 };
-/*
-    Usage:
-   .gradient(@primary, @secondary, 50);
-   Define two colors
-   additionaly cheange the percentage of the first color stop, default is 0%
-   Percent can be just a number 0-100
-
-*/
-.gradient(@color1, @color2, @percent: 0%) {
-  @percentnew: unit(@percent, %);
-  background: linear-gradient(45deg, @color1 @percentnew, @color2 100%);
-}
