@@ -155,8 +155,7 @@
 
 /**
  * Helpers generaion mixin
- * TODO: classes without size postfix, e.g.
- * .fixed, .centered
+ * TODO: avoid of using classes without row- and col- prefixes
  */
 
 .grid-generate-helpers(@size) {
@@ -164,13 +163,16 @@
   .row,
   .flex {
     // Flow changing
-    &.fixed@{size} {
+    &.fixed@{size},
+    &.row-fixed@{size} {
       flex-wrap: nowrap;
     }
-    &.reverse@{size} {
+    &.reverse@{size},
+    &.row-reverse@{size} {
       flex-direction: row-reverse;
     }
-    &.vertical@{size} {
+    &.vertical@{size},
+    &.row-vertical@{size} {
       flex-direction: column;
       &.reverse {
         flex-direction: column-reverse;
@@ -178,35 +180,45 @@
     }
 
     // Breakpoints-based aligning
-    &.centered@{size} {
+    &.centered@{size},
+    &.row-centered@{size} {
       align-items: center;
       justify-content: center;
     }
-    &.stretched@{size} {
+    &.stretched@{size},
+    &.row-stretched@{size} {
       align-items: stretch;
     }
-    &.justify-start@{size} {
+    &.justify-start@{size},
+    &.row-justify-start@{size} {
       justify-content: flex-start;
     }
-    &.justify-center@{size} {
+    &.justify-center@{size},
+    &.row-justify-center@{size} {
       justify-content: center;
     }
-    &.justify-end@{size} {
+    &.justify-end@{size},
+    &.row-justify-end@{size} {
       justify-content: flex-end;
     }
-    &.align-start@{size} {
+    &.align-start@{size},
+    &.row-align-start@{size} {
       align-items: flex-start;
     }
-    &.align-center@{size} {
+    &.align-center@{size},
+    &.row-align-center@{size} {
       align-items: center;
     }
-    &.align-end@{size} {
+    &.align-end@{size},
+    &.row-align-end@{size} {
       align-items: flex-end;
     }
-    &.space-around@{size} {
+    &.space-around@{size},
+    &.row-space-around@{size} {
       justify-content: space-around;
     }
-    &.space-between@{size} {
+    &.space-between@{size},
+    &.row-space-between@{size} {
       justify-content: space-between;
     }
   }
@@ -215,26 +227,32 @@
     // Ordering
     // TODO: make re-ordering,
     // like in Foundation framework
-    &.first@{size} {
+    &.first@{size},
+    &.col-first@{size} {
       order: -1;
     }
-    &.last@{size} {
+    &.last@{size},
+    &.col-last@{size} {
       order: 1;
     }
-    &.stretched@{size} {
+    &.stretched@{size},
+    &.col-stretched@{size} {
       flex-grow: 1;
       // Using of flex-shrink prevents overflow,
       // when content in stretched column is too long
       flex-shrink: 1;
     }
     // Self-aligning
-    &.align-start@{size} {
+    &.align-start@{size},
+    &.col-align-start@{size} {
       align-self: flex-start;
     }
-    &.align-center@{size} {
+    &.align-center@{size},
+    &.col-align-center@{size} {
       align-self: center;
     }
-    &.align-end@{size} {
+    &.align-end@{size},
+    &.col-align-end@{size} {
       align-self: flex-end;
     }
   }
