@@ -224,6 +224,24 @@
   }
 
   .col {
+    // TODO: implement this it new grid release
+    // By default all columns shared space
+    // flex-grow: 1;
+    // flex-shrink: 1;
+    // flex-basis: 0px;
+    // Shrinked / stretced column
+    &.col-shrink@{size} {
+      flex-grow: 0;
+      flex-shrink: 1;
+      flex-basis: auto;
+    }
+    &.col-stretch@{size} {
+      flex-grow: 1;
+      // Using of flex-shrink prevents overflow,
+      // when content in stretched column is too long
+      flex-shrink: 1;
+      flex-basis: auto;
+    }
     // Ordering
     // TODO: make re-ordering,
     // like in Foundation framework
@@ -235,6 +253,7 @@
     &.col-last@{size} {
       order: 1;
     }
+    // TODO: remove
     &.stretched@{size},
     &.col-stretched@{size} {
       flex-grow: 1;
