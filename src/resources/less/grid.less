@@ -8,31 +8,6 @@
  * @package spent-web-client
  */
 
-@columns: 12;
-@start-size: ~'xs';
-
-// Grid uses mobile-first breakpoints
-// eg. from min-width to inf.
-@grid-min-sizes:
-  sm @media-sm-min,
-  md @media-md-min,
-  lg @media-lg-min,
-  xl @media-xl-min
-;
-
-// But columns re-ordering classes
-// uses breakpoints from 0 to max-width
-@grid-max-sizes:
-  xs @media-xs-max,
-  sm @media-sm-max,
-  md @media-md-max,
-  lg @media-lg-max
-;
-
-/**
- * Base grid classes
- */
-
 .container,
 .container-fluid {
   margin-right: auto;
@@ -105,20 +80,20 @@
   .col@{size}-offset-none {
     margin-left: 0;
   }
-  .grid-generate-columns(@size, @columns);
+  .grid-generate-columns(@size, @grid-columns);
   // Offsets for @{size}
   .col@{size}-offset-0 {
     .grid-column-base-classes();
     margin-left: 0;
   }
-  .grid-generate-offsets(@size, @columns);
+  .grid-generate-offsets(@size, @grid-columns);
   // Helpers for @{size}
   .grid-generate-helpers(@size);
   // TODO: think about this and maybe implement?
   // Table-like rows, stretchable and without wrapping
   // In this way only minimal width fixed
   /* .fixed-row {
-    .grid-generate-columns(@size, @columns, true);
+    .grid-generate-columns(@size, @grid-columns, true);
   } */
 }
 
@@ -285,10 +260,11 @@
 // Generate base grid & helpers without size definition
 .grid-generate-helpers(e(""));
 
-// Generate grid for start size (mobile-first)
-.grid-generate(e("-@{start-size}"));
+// Generate classes for a first defined resolution
+.grid-generate(e("-@{grid-start-size}"));
 
-// Generate grids for defined sizes
+// Generate indent classes for defined resolutions
+// With media breakpoints based on min-width (mobile first)
 .iterate-min-sizes(length(@grid-min-sizes));
 .iterate-min-sizes(@n, @i: 1) when (@i <= @n) {
   @pair: extract(@grid-min-sizes, @i);
@@ -300,7 +276,8 @@
   .iterate-min-sizes(@n, (@i + 1));
 }
 
-// Iterate defined max-sizes
+// Generate indent classes for defined resolutions
+// With media breakpoints based on max-width (non-mobile first)
 // NOTE: using breakpoints from 0 to max-width
 .iterate-max-sizes(length(@grid-max-sizes));
 .iterate-max-sizes(@n, @i: 1) when (@i <= @n) {
@@ -309,7 +286,7 @@
   @query: extract(@pair, 2);
   @media @query {
     // Generate classes for ordered columns
-    .grid-generate-order-classes(e("-@{size}"), @columns);
+    .grid-generate-order-classes(e("-@{size}"), @grid-columns);
     // Generate non-mobile-first helpers
     .grid-generate-helpers(e("-@{size}-max"));
   }
