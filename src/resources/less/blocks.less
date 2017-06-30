@@ -96,7 +96,7 @@
 .generate-indents(e(""));
 
 // Generate classes for a first defined resolution
-.generate-indents(e("-@{grid-start-size}"));
+.generate-indents(e("@{grid-start-size}-"));
 
 // Generate indent classes for defined resolutions
 // With media breakpoints based on min-width (mobile first)
@@ -106,7 +106,7 @@
   @size: extract(@pair, 1);
   @query: extract(@pair, 2);
   @media @query {
-    .generate-indents(e("-@{size}"));
+    .generate-indents(e("@{size}-"));
   }
   .iterate-min-sizes(@n, (@i + 1));
 }
@@ -119,7 +119,7 @@
   @size: extract(@pair, 1);
   @query: extract(@pair, 2);
   @media @query {
-    .generate-indents(e("-@{size}-max"));
+    .generate-indents(e("@{size}-max-"));
   }
   .iterate-max-sizes(@n, (@i + 1));
 }
