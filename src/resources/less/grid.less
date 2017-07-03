@@ -265,22 +265,22 @@
 
 // Generate indent classes for defined resolutions
 // With media breakpoints based on min-width (mobile first)
-.iterate-min-sizes(length(@grid-min-sizes));
-.iterate-min-sizes(@n, @i: 1) when (@i <= @n) {
+.grid-iterate-min-sizes(length(@grid-min-sizes));
+.grid-iterate-min-sizes(@n, @i: 1) when (@i <= @n) {
   @pair: extract(@grid-min-sizes, @i);
   @size: extract(@pair, 1);
   @query: extract(@pair, 2);
   @media @query {
     .grid-generate(e("-@{size}"));
   }
-  .iterate-min-sizes(@n, (@i + 1));
+  .grid-iterate-min-sizes(@n, (@i + 1));
 }
 
 // Generate indent classes for defined resolutions
 // With media breakpoints based on max-width (non-mobile first)
 // NOTE: using breakpoints from 0 to max-width
-.iterate-max-sizes(length(@grid-max-sizes));
-.iterate-max-sizes(@n, @i: 1) when (@i <= @n) {
+.grid-iterate-max-sizes(length(@grid-max-sizes));
+.grid-iterate-max-sizes(@n, @i: 1) when (@i <= @n) {
   @pair: extract(@grid-max-sizes, @i);
   @size: extract(@pair, 1);
   @query: extract(@pair, 2);
@@ -290,5 +290,5 @@
     // Generate non-mobile-first helpers
     .grid-generate-helpers(e("-@{size}-max"));
   }
-  .iterate-max-sizes(@n, (@i + 1));
+  .grid-iterate-max-sizes(@n, (@i + 1));
 }

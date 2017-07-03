@@ -1,7 +1,8 @@
 @import "vars.less";
 
 /**
- * Paddings and margins classes
+ * Responsive helpers for blocks:
+ * paddings and margins, hiding
  */
 
 @block-indents:
@@ -13,14 +14,10 @@
   big    @indent-big
 ;
 
-/**
- * Classes generation mixin
- */
-
+// Classes for paddings and margins mixin
 .generate-indent-classes(@indent, @value, @size) {
 
   // Block margins
-
   .@{size}margin-@{indent} {
     margin: @value !important;
   }
@@ -48,7 +45,6 @@
   }
 
   // Block paddings
-
   .@{size}padding-@{indent} {
     padding: @value !important;
   }
@@ -77,19 +73,26 @@
 
 }
 
+// Responsive visibility mixin
+.generate-visibility-classes(@size) {
+  .hide-@{size} {
+    display: none !important;
+  }
+}
+
 /**
- * Indent classes generation
+ * Classes generation for indents and hiding
  */
 
 .generate-indents(@size) {
   // Iterate defined indents and generate classes for them
-  .iterate-indents(length(@block-indents));
-  .iterate-indents(@n, @i: 1) when (@i <= @n) {
+  .blocks-iterate-indents(length(@block-indents));
+  .blocks-iterate-indents(@n, @i: 1) when (@i <= @n) {
     @pair: extract(@block-indents, @i);
     @indent: extract(@pair, 1);
     @value: extract(@pair, 2);
     .generate-indent-classes(@indent, @value, @size);
-    .iterate-indents(@n, (@i + 1));
+    .blocks-iterate-indents(@n, (@i + 1));
   }
 }
 
@@ -101,26 +104,40 @@
 
 // Generate indent classes for defined resolutions
 // With media breakpoints based on min-width (mobile first)
-.iterate-min-sizes(length(@grid-min-sizes));
-.iterate-min-sizes(@n, @i: 1) when (@i <= @n) {
+.blocks-iterate-min-sizes(length(@grid-min-sizes));
+.blocks-iterate-min-sizes(@n, @i: 1) when (@i <= @n) {
   @pair: extract(@grid-min-sizes, @i);
   @size: extract(@pair, 1);
   @query: extract(@pair, 2);
   @media @query {
+    .generate-visibility-classes(@size);
     .generate-indents(e("@{size}-"));
   }
-  .iterate-min-sizes(@n, (@i + 1));
+  .blocks-iterate-min-sizes(@n, (@i + 1));
 }
 
 // Generate indent classes for defined resolutions
 // With media breakpoints based on max-width (non-mobile first)
-.iterate-max-sizes(length(@grid-max-sizes));
-.iterate-max-sizes(@n, @i: 1) when (@i <= @n) {
+.blocks-iterate-max-sizes(length(@grid-max-sizes));
+.blocks-iterate-max-sizes(@n, @i: 1) when (@i <= @n) {
   @pair: extract(@grid-max-sizes, @i);
   @size: extract(@pair, 1);
   @query: extract(@pair, 2);
   @media @query {
+    .generate-visibility-classes(e("@{size}-max"));
     .generate-indents(e("@{size}-max-"));
   }
-  .iterate-max-sizes(@n, (@i + 1));
+  .blocks-iterate-max-sizes(@n, (@i + 1));
+}
+
+// Generate classes for defined intervals
+.blocks-iterate-intervals(length(@grid-intervals));
+.blocks-iterate-intervals(@n, @i: 1) when (@i <= @n) {
+  @pair: extract(@grid-intervals, @i);
+  @size: extract(@pair, 1);
+  @query: extract(@pair, 2);
+  @media @query {
+    .generate-visibility-classes(e("@{size}-only"));
+  }
+  .blocks-iterate-intervals(@n, (@i + 1));
 }
