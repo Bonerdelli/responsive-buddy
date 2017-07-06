@@ -80,6 +80,24 @@
   }
 }
 
+// Responsive texts aligning mixin
+.generate-text-aligning-classes(@size) {
+
+  .text-left@{size} {
+    text-align: left !important;
+  }
+  .text-right@{size} {
+    text-align: right !important;
+  }
+  .text-center@{size} {
+    text-align: center !important;
+  }
+  .text-nowrap@{size} {
+    white-space: nowrap !important;
+  }
+
+}
+
 /**
  * Classes generation for indents and hiding
  */
@@ -98,9 +116,12 @@
 
 // Generate classes without size definition
 .generate-indents(e(""));
+// NOTE: duplicate classes from texts.less
+.generate-text-aligning-classes(e(""));
 
 // Generate classes for a first defined resolution
 .generate-indents(e("@{grid-start-size}-"));
+.generate-text-aligning-classes(e("-@{grid-start-size}"));
 
 // Generate indent classes for defined resolutions
 // With media breakpoints based on min-width (mobile first)
@@ -111,6 +132,7 @@
   @query: extract(@pair, 2);
   @media @query {
     .generate-visibility-classes(@size);
+    .generate-text-aligning-classes(e("-@{size}"));
     .generate-indents(e("@{size}-"));
   }
   .blocks-iterate-min-sizes(@n, (@i + 1));
@@ -125,6 +147,7 @@
   @query: extract(@pair, 2);
   @media @query {
     .generate-visibility-classes(e("@{size}-max"));
+    .generate-text-aligning-classes(e("-@{size}-max"));
     .generate-indents(e("@{size}-max-"));
   }
   .blocks-iterate-max-sizes(@n, (@i + 1));
@@ -138,6 +161,7 @@
   @query: extract(@pair, 2);
   @media @query {
     .generate-visibility-classes(e("@{size}-only"));
+    .generate-text-aligning-classes(e("-@{size}-only"));
   }
   .blocks-iterate-intervals(@n, (@i + 1));
 }
