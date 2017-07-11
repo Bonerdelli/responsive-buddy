@@ -162,6 +162,7 @@
   @media @query {
     .generate-visibility-classes(e("@{size}-only"));
     .generate-text-aligning-classes(e("-@{size}-only"));
+    .generate-indents(e("@{size}-only-"));
   }
   .blocks-iterate-intervals(@n, (@i + 1));
 }
