@@ -23,6 +23,9 @@
   flex-basis: auto;
   flex-direction: row;
   flex-wrap: wrap;
+  & > * {
+    max-width: 100%;
+  }
 }
 
 /**
@@ -51,7 +54,7 @@
 .grid-generate-column-classes(@width, @fixed) {
   .grid-column-base-classes();
   flex-basis: @width;
-  min-width: @width;
+  max-width: @width;
 }
 
 .grid-generate-order-classes(@size, @n, @i: 1) when (@i <= @n) {
