@@ -210,13 +210,6 @@
       flex-shrink: 1;
       flex-basis: auto;
     }
-    &.col-stretch@{size} {
-      flex-grow: 1;
-      // Using of flex-shrink prevents overflow,
-      // when content in stretched column is too long
-      flex-shrink: 1;
-      flex-basis: auto;
-    }
     // Ordering
     // TODO: make re-ordering,
     // like in Foundation framework
@@ -228,14 +221,28 @@
     &.col-last@{size} {
       order: 1;
     }
-    // TODO: remove
+
+    // TODO: deal with it
     &.stretched@{size},
     &.col-stretched@{size} {
+      // TODO: remove this
       flex-grow: 1;
       // Using of flex-shrink prevents overflow,
       // when content in stretched column is too long
       flex-shrink: 1;
     }
+    &.col-stretch@{size} {
+      flex-grow: 1;
+      // Using of flex-shrink prevents overflow,
+      // when content in stretched column is too long
+      flex-shrink: 1;
+      flex-basis: auto;
+    }
+    &.full-width@{size},
+    .col-full-width@{size} {
+      flex-grow: 2;
+    }
+
     // Self-aligning
     &.align-start@{size},
     &.col-align-start@{size} {
