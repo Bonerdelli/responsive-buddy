@@ -1,21 +1,15 @@
-@import "../vars.less";
+@import '../vars';
 
 /**
  * Flexbox-based 12-columns grid
- * Based on this good project https://github.com/kristoferjoseph/flexboxgrid
+ * Based on flexboxgrid project: https://github.com/kristoferjoseph/flexboxgrid
  * Made without column paddings. Uses min-width breakpoints instead max-width
  * @author Andrey Nekrasov <bonerdelli@gmail.com>
- * @package spent-web-client
+ * @package spent-web-travel
+ * @version 1.1.0
  */
 
-.container,
-.container-fluid {
-  margin-right: auto;
-  margin-left: auto;
-}
-
-.row,
-.flex {
+.row {
   box-sizing: border-box;
   display: flex;
   flex-grow: 0;
@@ -23,7 +17,7 @@
   flex-basis: auto;
   flex-direction: row;
   flex-wrap: wrap;
-  & > * {
+  & > * { // lesshint universalSelector: false
     max-width: 100%;
   }
 }
@@ -138,18 +132,14 @@
 
 .grid-generate-helpers(@size) {
 
-  .row,
-  .flex {
+  .row, {
     // Flow changing
-    &.fixed@{size},
     &.row-fixed@{size} {
       flex-wrap: nowrap;
     }
-    &.reverse@{size},
     &.row-reverse@{size} {
       flex-direction: row-reverse;
     }
-    &.vertical@{size},
     &.row-vertical@{size} {
       flex-direction: column;
       &.reverse {
@@ -158,81 +148,59 @@
     }
 
     // Breakpoints-based aligning
-    &.centered@{size},
     &.row-centered@{size} {
       align-items: center;
       justify-content: center;
     }
-    &.stretched@{size},
     &.row-stretched@{size} {
       align-items: stretch;
     }
-    &.justify-start@{size},
     &.row-justify-start@{size} {
       justify-content: flex-start;
     }
-    &.justify-center@{size},
     &.row-justify-center@{size} {
       justify-content: center;
     }
-    &.justify-end@{size},
     &.row-justify-end@{size} {
       justify-content: flex-end;
     }
-    &.align-start@{size},
     &.row-align-start@{size} {
       align-items: flex-start;
     }
-    &.align-center@{size},
     &.row-align-center@{size} {
       align-items: center;
     }
-    &.align-end@{size},
     &.row-align-end@{size} {
       align-items: flex-end;
     }
-    &.space-around@{size},
     &.row-space-around@{size} {
       justify-content: space-around;
     }
-    &.space-between@{size},
     &.row-space-between@{size} {
       justify-content: space-between;
     }
   }
 
   .col {
-    // TODO: implement this it new grid release
-    // By default all columns shared space
-    // flex-grow: 1;
-    // flex-shrink: 1;
-    // flex-basis: 0px;
+    flex-grow: 1;
+    flex-shrink: 1;
+    flex-basis: 0;
+
+    // Ordering
+    // TODO: make re-ordering,
+    // like in Foundation framework
+    &.col-first@{size} {
+      order: -1;
+    }
+    &.col-last@{size} {
+      order: 1;
+    }
+
     // Shrinked / stretced column
     &.col-shrink@{size} {
       flex-grow: 0;
       flex-shrink: 1;
       flex-basis: auto;
-    }
-    // Ordering
-    // TODO: make re-ordering,
-    // like in Foundation framework
-    &.first@{size},
-    &.col-first@{size} {
-      order: -1;
-    }
-    &.last@{size},
-    &.col-last@{size} {
-      order: 1;
-    }
-
-    // TODO: deal with it
-    &.stretched@{size},
-    &.col-stretched@{size} {
-      // TODO: remove this
-      flex-grow: 1;
-      // Using of flex-shrink prevents overflow,
-      // when content in stretched column is too long
-      flex-shrink: 1;
     }
     &.col-stretch@{size} {
       flex-grow: 1;
@@ -241,21 +209,17 @@
       flex-shrink: 1;
       flex-basis: auto;
     }
-    &.full-width@{size},
     .col-full-width@{size} {
       flex-grow: 2;
     }
 
     // Self-aligning
-    &.align-start@{size},
     &.col-align-start@{size} {
       align-self: flex-start;
     }
-    &.align-center@{size},
     &.col-align-center@{size} {
       align-self: center;
     }
-    &.align-end@{size},
     &.col-align-end@{size} {
       align-self: flex-end;
     }

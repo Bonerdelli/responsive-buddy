@@ -6,21 +6,18 @@ html,
 body {
   margin: 0;
   padding: 0;
-  background: @white; // While rebranding public pages
 }
 
 img {
   max-width: 100%;
 }
 
-* {
+* { // lesshint universalSelector: false
   box-sizing: border-box;
-  & [toggler] {
-    cursor: pointer;
-  }
 }
 
-ul, ol {
+ul,
+ol {
   list-style-position: inside;
 }
 
@@ -30,33 +27,22 @@ ul.menu {
   margin: 0;
 
   list-style-type: none;
-
-  & > li {
-    cursor: pointer;
-    &.disabled {
-      cursor: default;
-    }
-  }
 }
 
 form {
   margin: 0;
 }
 
-a {
-  cursor: pointer;
-}
-
 /**
  * Reset input styles
  */
 
-input[type=number]::-webkit-outer-spin-button,
-input[type=number]::-webkit-inner-spin-button {
+input[type='number']::-webkit-outer-spin-button,
+input[type='number']::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
-input[type=number],
-input[type=tel] {
+input[type='number'],
+input[type='tel'] {
   -moz-appearance: textfield;
 }

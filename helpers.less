@@ -1,1 +1,130 @@
+@import '../vars';
 
+// Use to set the color of something
+.generate-palette-classes(color, @pallete, color-);
+// Use to set the background of something
+.generate-palette-classes(background-color, @pallete, bg-);
+
+/**
+ * Flow changing
+ */
+
+.relative {
+  position: relative;
+}
+
+.hidden {
+  display: none;
+}
+
+.pull-right {
+  float: right;
+}
+
+.pull-left {
+  float: left;
+}
+
+.clearfix {
+  &::after {
+    content: '';
+    display: table;
+    clear: both;
+  }
+}
+
+/**
+ * Text aligning
+ * NOTE: responsive classes also generated for this
+ */
+
+.text-center {
+  text-align: center;
+}
+.text-right {
+  text-align: right;
+}
+.text-nowrap {
+  white-space: nowrap;
+}
+
+/**
+ * Font size helpers
+ */
+
+.font-xs {
+  font-size: @font-xs;
+}
+.font-sm {
+  font-size: @font-sm;
+}
+.font-lg {
+  font-size: @font-lg;
+}
+.font-xl {
+  font-size: @font-xl;
+}
+
+.font-larger {
+  font-size: 110%;
+}
+.font-smaller {
+  font-size: 92%;
+}
+
+/**
+ * Font style helpers
+ */
+
+.font-accented {
+  font-family: @font-nexa;
+}
+
+.text-upper {
+  text-transform: uppercase;
+}
+.text-lower {
+  text-transform: lowercase;
+}
+.text-capitalize {
+  text-transform: capitalize;
+}
+
+.underlined {
+  text-decoration: underline;
+}
+
+.font-semibold {
+  font-weight: @font-semibold;
+}
+.font-medium {
+  font-weight: @font-medium;
+}
+.font-bold {
+  font-weight: @font-bold;
+}
+.font-regular {
+  font-weight: @font-regular;
+}
+
+/**
+ * Various helpers
+ */
+
+.overflow-ellipsis {
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.no-animate {
+  -webkit-transition: none !important; // lesshint importantRule: false
+  transition: none !important; // lesshint importantRule: false
+}
+
+.img-responsive {
+  width: 100%;
+}
+
+.pointer {
+  cursor: pointer;
+}

@@ -1,67 +1,38 @@
-@import "../vars.less";
-
 /**
- * A pure CSS chevron icon generator
+ * Mixin for generate classes from palette array
+ *
+ * @description
+ * Usage:
+ * .generate-palette-classes(color background background-color, @colorPallete , prefix);
+ *   First parameter is an array of attributes to be added, seperated with spaces
+ *   Second parameter is a key-value array
+ *   Third parameter is a prefix to the keys
+ *
+ * @colorPallete:
+ *   red #ff4040,
+ *   purple #5f4ed8,
+ *   goldy gold;
+ *
+ *   It will generate the class according to the key : .red, .purple, .goldy
+ *   if you use prefix: .prefix-red, .prefix-goldy
+ *   If you use it inside the other class, it will combine to those like this:
+ *
+ * @example
+ *  .add {
+ *    .generate-palette-classes(color, @colorPallete, color-)
+ *  }
+ *
+ *  // It will produce:
+ *
+ *  .add.color-goldy {
+ *    color: gold
+ *  }
+ *  .add.color-purple {
+ *    color: #5f4ed8
+ *  }
  */
 
-@chevron-border-width: 1px;
-@chevron-border-width-bolder: 2px;
-@chevron-size: (@font-size - 6px);
-@chevron-size-lg: (@font-lg - 6px);
-@chevron-size-sm: (@font-sm - 6px);
-@chevron-size-xs: (@font-sm - 8px);
-
-.chevron-base(@color: @font-color) {
-  //display: block;
-  display: inline-block;
-  width:  @chevron-size;
-  height: @chevron-size;
-  border-left: @chevron-border-width @font-color solid;
-  border-top:  @chevron-border-width @font-color solid;
-  // Coloring with a regular classes for text coloring
-  // NOTE: text color inheritance will broken here
-  // I.e. ".color-blue" must be applied also to ".chevron" element
-  .add-classes(border-color, @pallete, color-);
-  &.chevron-small {
-    width:  @chevron-size-sm;
-    height: @chevron-size-sm;
-  }
-  &.chevron-smaller {
-    width:  @chevron-size-xs;
-    height: @chevron-size-xs;
-    position: relative;
-    top: -2px;
-  }
-  &.lg {
-    width:  @chevron-size-lg;
-    height: @chevron-size-lg;
-  }
-  // Bold font emulation
-  &.bolder {
-    border-left-width: @chevron-border-width-bolder;
-    border-top-width:  @chevron-border-width-bolder;
-  }
-}
-
-// New rebranding MIXINS:
-/*
-    Usage:
-    .add-classes(color background background-color, @colorPallete , prefix);
-      First parameter is an array of attributes to be added, seperated with spaces
-      Second parameter is a key-value array
-      Third parameter is a prefix to the keys
-
-    @colorPallete:
-      red #ff4040,
-      purple #5f4ed8,
-      goldy gold;
-
-      it will generate the class according to the key : .red, .purple, .goldy
-      if you use prefix: .prefix-red, .prefix-goldy
-      If you use it inside the other class, it will combine to those like this:
-      .add{ .add-classes(color, @colorPallete, color-) }     will be   .add.color-goldy{color:gold} and .add.color-purple{color:#5f4ed8}
-*/
-.add-classes(@attributes, @array, @prefix:'') {
+.generate-palette-classes(@attributes, @array, @prefix: '') {
   .iter(length(@array));
 
   .iter(@i) when (@i > 0) {
@@ -81,53 +52,3 @@
     }
   }
 }
-/*
-    Usage:
-
-    TODO: What is this? Comment, please
-*/
-.contrast-colors(@colors) {
-  .iter(length(@colors));
-
-  .iter(@i) when (@i > 0) {
-    .iter(@i - 1);
-    @pair: extract(@colors, @i);
-    @key: extract(@pair, 1);
-    @value: extract(@pair, 2);
-
-    &.@{key}-@{value} {
-      color: @@key;
-      background: @@value;
-      &button,
-      &.button,
-      &.clickable {
-        // Add classes for active state
-        // Used for buttons and other clickable elements
-        &:hover {
-          color: mix(@@key, #fff, @hover-color-mix-percentage);
-          background: mix(@@value, #fff, @hover-color-mix-percentage);
-          text-decoration: none;
-        }
-        &:active {
-          background-color: mix(@@value, #000, 90%);
-        }
-      }
-
-    }
-
-    &.@{value}-@{key} {
-      color: @@value;
-      background: @@key;
-      &button,
-      &.button,
-      &.clickable {
-        // Add classes for active state
-        &:hover {
-          color: mix(@@value, #fff, @hover-color-mix-percentage);
-          background: mix(@@key, #fff, @hover-color-mix-percentage);
-          text-decoration: none;
-        }
-      }
-    }
-  }
-};
