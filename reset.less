@@ -1,0 +1,48 @@
+/**
+ * Default browser styles reseting
+ */
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+img {
+  max-width: 100%;
+}
+
+* { // lesshint universalSelector: false
+  box-sizing: border-box;
+}
+
+ul,
+ol {
+  list-style-position: inside;
+}
+
+menu,
+ul.menu {
+  padding: 0;
+  margin: 0;
+
+  list-style-type: none;
+}
+
+form {
+  margin: 0;
+}
+
+/**
+ * Reset input styles
+ */
+
+input[type='number']::-webkit-outer-spin-button,
+input[type='number']::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+input[type='number'],
+input[type='tel'] {
+  -moz-appearance: textfield;
+}

@@ -1,0 +1,54 @@
+/**
+ * Mixin for generate classes from palette array
+ *
+ * @description
+ * Usage:
+ * .generate-palette-classes(color background background-color, @colorPallete , prefix);
+ *   First parameter is an array of attributes to be added, seperated with spaces
+ *   Second parameter is a key-value array
+ *   Third parameter is a prefix to the keys
+ *
+ * @colorPallete:
+ *   red #ff4040,
+ *   purple #5f4ed8,
+ *   goldy gold;
+ *
+ *   It will generate the class according to the key : .red, .purple, .goldy
+ *   if you use prefix: .prefix-red, .prefix-goldy
+ *   If you use it inside the other class, it will combine to those like this:
+ *
+ * @example
+ *  .add {
+ *    .generate-palette-classes(color, @colorPallete, color-)
+ *  }
+ *
+ *  // It will produce:
+ *
+ *  .add.color-goldy {
+ *    color: gold
+ *  }
+ *  .add.color-purple {
+ *    color: #5f4ed8
+ *  }
+ */
+
+.generate-palette-classes(@attributes, @array, @prefix: '') {
+  .iter(length(@array));
+
+  .iter(@i) when (@i > 0) {
+    .iter(@i - 1);
+    @pair: extract(@array, @i);
+    @key: extract(@pair, 1);
+    @value: extract(@pair, 2);
+    @classname: ~'@{prefix}@{key}';
+
+    &.@{classname} {
+      .attrList(length(@attributes));
+      .attrList(@a) when (@a > 0) {
+        .attrList( @a - 1 );
+        @eachAtr: extract(@attributes, @a);
+        @{eachAtr}: @value;
+      }
+    }
+  }
+}
