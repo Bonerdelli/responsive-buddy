@@ -137,30 +137,6 @@
   text-overflow: ellipsis;
 }
 
-ul.bullet-mini {
-  list-style-type: none;
-  & > li {
-    padding-left: 10px;
-    position: relative;
-    &:before {
-      @size : 3px;
-      content: '';
-      background: @white;
-      width: @size;
-      height: @size;
-      position: absolute;
-      left: 0;
-      bottom: 50%;
-      margin-bottom: -@size/2;
-      border-radius: 50%;
-    }
-  }
-}
-
-ul.bullet-no {
-  list-style-type: none;
-}
-
 .no-animate {
   -webkit-transition: none !important; // lesshint importantRule: false
   transition: none !important; // lesshint importantRule: false
