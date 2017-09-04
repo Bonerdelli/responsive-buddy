@@ -47,7 +47,7 @@
       .attrList(@a) when (@a > 0) {
         .attrList( @a - 1 );
         @eachAtr: extract(@attributes, @a);
-        @{eachAtr}: @value;
+        @{eachAtr}: @value !important;
       }
     }
   }
