@@ -167,3 +167,13 @@
 .hoverable {
   cursor: pointer;
 }
+
+
+// Disables text selection
+.no-select {
+  &::selection,
+  *::selection {
+    background: transparent;
+    color: inherit;
+  }
+}
