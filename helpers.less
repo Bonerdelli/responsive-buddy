@@ -50,6 +50,14 @@
   justify-content: center;
 }
 
+.centered-multiline {
+  // TODO: check this realization for cross-browser
+  height: 100%;
+  flex-direction: column;
+  display: flex;
+  justify-content: center;
+}
+
 .inline-blocks-container {
   & > * {
     display: inline-block;
@@ -87,9 +95,14 @@
 .font-large {
   font-size: @font-size-large;
 }
-
 .font-larger {
-  font-size: 110%;
+  font-size: 130%;
+}
+.font-big {
+  font-size: @font-size-big;
+}
+.font-huge {
+  font-size: @font-size-huge;
 }
 .font-smaller {
   font-size: 92%;
