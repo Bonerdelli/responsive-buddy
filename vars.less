@@ -7,41 +7,26 @@
 @black:     #000;
 
 // Grays from light to dark
-@white-cotton: #fcfcfc;
-@white-ash: #9b9b9b;
 @cotton:    #efefef;
 @tin:       #bebebe;
 @ash:       #7e7e7e;
 @coal:      #4a4a4a;
 
 // Main colors by usage
-@purple:    #5f4ed8;
-@aqua:      #a1e8d9;
-@orange:    #ffad29;
-
-// Additional colors
 @red:       #ff3f56;
+@orange:    #ffad29;
 @yellow:    #faef69;
 @green:     #14d683;
+@aqua:      #a1e8d9;
 @blue:      #4a90e2;
-
-// Creating color universal classes
-@primary:   @purple;
-@secondary: @aqua;
-@active:    @orange;
-
-// Additional colors
-@aqua-light: #e2f7f2;
-@white-three: #d8d8d8;
-@purple-gray: #5c53d1;
+@purple:    #5f4ed8;
 
 /**
  * Media queries breakpoints
  */
 
-@screen-xxs: 330px;
 @screen-xs: 400px;
-@screen-sm: 560px; // TODO: check if we need this
+@screen-sm: 560px;
 @screen-md: 780px;
 @screen-lg: 1040px;
 @screen-xl: 1440px;
@@ -65,7 +50,6 @@
 @media-lg-min: e('screen and (min-width: @{screen-lg-min})');
 @media-xl-min: e('screen and (min-width: @{screen-xl-min})');
 
-@media-xxs-max: e('screen and (max-width: @{screen-xxs})');
 @media-xs-max: e('screen and (max-width: @{screen-xs})');
 @media-sm-max: e('screen and (max-width: @{screen-sm})');
 @media-md-max: e('screen and (max-width: @{screen-md})');
@@ -81,21 +65,12 @@
  * Fonts variables
  */
 
-// Text coloring
-@text-color: @coal;
-@text-color-secondary: @ash;
-@text-color-disabled: @tin;
-@text-color-accent: @green;
-
 @font-size:             14px;
 @font-size-tiny:        10px;
 @font-size-small:       12px;
 @font-size-large:       16px;
 @font-size-big:         20px;
 @font-size-huge:        24px;
-
-@font-family-work: 'Work Sans', sans-serif;
-@font-family-nexa: 'Nexa', sans-serif;
 
 @font-weigth-light:      200;
 @font-weigth-regular:    400;
@@ -162,12 +137,8 @@
   blue   @blue,
   white  @white,
   cotton @cotton,
-
   tin    @tin,
   ash    @ash,
   coal   @coal,
   black  @black,
-
-  aqua-light @aqua-light,
-  white-ash  @white-ash
 ;
