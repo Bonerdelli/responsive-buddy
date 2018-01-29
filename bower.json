@@ -10,7 +10,7 @@
     "Evgeny Golubev <evgeny@spentapp.com>"
   ],  
   "description": "A lightweight and fully customisable CSS framework, with 12-columns responsive grid",
-  "main": "dist/buddy.css",
+  "main": "dist/buddy.min.css",
   "keywords": [
     "CSS framework",
     "LESS framework",

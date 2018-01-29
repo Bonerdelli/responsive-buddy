@@ -10,14 +10,19 @@ A lightweight and fully customizable LESS-based framework for developing modern 
 
 ## Developing
 
-1. Install LESS globally. A latest NodeJS must be installed. 
+1. Install LESS and Clean CSS plugin globally. A latest NodeJS must be installed. 
 
 ```
-npm install less -g
+npm install -g less less-plugin-clean-css
 ```
 1. Do some improvements and build a project. LESS will be compiled in `dist/buddy.css` file.
 
 ```
 npm run build
 ```
+1. When all improvements will be done, run a build all command.
 
+```
+npm run build-all
+```
+1. Do a pull request if you want to contribute in project
