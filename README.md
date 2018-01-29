@@ -6,7 +6,7 @@ A lightweight and fully customizable LESS-based framework for developing modern 
 - 12-columns responsive grid with both mobile and non-mobile first breakpoints
 - Responsive helper classes for mastering block layout: paddings, margins, hiding, etc.
 - Responsive text classes: aligning, font sizing, font decoration, etc.
-- Mixin for coloring classes generation, based on @palette
+- Mixin for coloring classes generation, based on `@palette`
 
 ## Developing
 
@@ -15,14 +15,14 @@ A lightweight and fully customizable LESS-based framework for developing modern 
 ```
 npm install -g less less-plugin-clean-css less-plugin-autoprefix
 ```
-1. Do some improvements and build a project. LESS will be compiled in `dist/buddy.css` file.
+2. Do some improvements and build a project. LESS will be compiled in `dist/buddy.css` file.
 
 ```
 npm run build
 ```
-1. When all improvements will be done, run a build all command.
+3. When all improvements will be done, run a build all command.
 
 ```
 npm run build-all
 ```
-1. Do a pull request if you want to contribute in project
+4. Do a pull request if you want to contribute in project
