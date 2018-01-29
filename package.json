@@ -5,7 +5,7 @@
   "main": "dist/buddy.min.css",
   "scripts": {
     "build": "lessc ./source/_main.less ./dist/buddy.css",
-    "build-min": "lessc --clean-css='--s1 --advanced' ./source/_main.less ./dist/buddy.min.css",
+    "build-min": "lessc --autoprefix --clean-css='--s1 --advanced' ./source/_main.less ./dist/buddy.min.css",
     "build-all": "npm run build && npm run build-min"
   },
   "repository": {
@@ -22,5 +22,11 @@
   "bugs": {
     "url": "https://github.com/Bonerdelli/responsive-buddy/issues"
   },
-  "homepage": "https://github.com/Bonerdelli/responsive-buddy#readme"
+  "homepage": "https://github.com/Bonerdelli/responsive-buddy#readme",
+  "devDependencies": {
+    "less": "^2.7.3",
+    "less-plugin-autoprefix": "^1.5.1",
+    "less-plugin-clean-css": "^1.5.1"
+  },
+  "browserslist": "last 2 versions"
 }
