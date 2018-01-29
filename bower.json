@@ -1,0 +1,31 @@
+{
+  "name": "responsive-buddy",
+  "version": "1.1.0",
+  "homepage": "https://github.com/Bonerdelli/responsive-buddy",
+  "authors": [
+    "bonerdelli <bonerdelli@gmail.com>",
+    "Artemiy Egorov <artemiy@spentapp.com>"
+  ],
+  "contributors": [
+    "Evgeny Golubev <evgeny@spentapp.com>"
+  ],  
+  "description": "A lightweight and fully customisable CSS framework, with 12-columns responsive grid",
+  "main": "dist/buddy.css",
+  "keywords": [
+    "CSS framework",
+    "LESS framework",
+    "CSS grid",
+    "LESS grid",
+    "responsive grid",
+    "12-columns grid",
+    "responsive helpers",
+    "responsive clasees",
+    "grid generation"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components"
+  ]
+}
