@@ -1,0 +1,9 @@
+{
+  "colorVariables": false,
+  "propertyOrdering": false,
+  "qualifyingElement": false,
+  "newlineAfterBlock": false,
+  "hexNotation": "uppercase",
+  "zeroUnit": "no_unit",
+  "decimalZero": "none"
+}
