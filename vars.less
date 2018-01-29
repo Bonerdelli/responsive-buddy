@@ -1,0 +1,173 @@
+/**
+ * Coloring
+ */
+
+@white:     #fff;
+@gray:      #eee;
+@black:     #000;
+
+// Grays from light to dark
+@white-cotton: #fcfcfc;
+@white-ash: #9b9b9b;
+@cotton:    #efefef;
+@tin:       #bebebe;
+@ash:       #7e7e7e;
+@coal:      #4a4a4a;
+
+// Main colors by usage
+@purple:    #5f4ed8;
+@aqua:      #a1e8d9;
+@orange:    #ffad29;
+
+// Additional colors
+@red:       #ff3f56;
+@yellow:    #faef69;
+@green:     #14d683;
+@blue:      #4a90e2;
+
+// Creating color universal classes
+@primary:   @purple;
+@secondary: @aqua;
+@active:    @orange;
+
+// Additional colors
+@aqua-light: #e2f7f2;
+@white-three: #d8d8d8;
+@purple-gray: #5c53d1;
+
+/**
+ * Media queries breakpoints
+ */
+
+@screen-xxs: 330px;
+@screen-xs: 400px;
+@screen-sm: 560px; // TODO: check if we need this
+@screen-md: 780px;
+@screen-lg: 1040px;
+@screen-xl: 1440px;
+
+@screen-sm-min: (@screen-xs + 1px);
+@screen-md-min: (@screen-sm + 1px);
+@screen-lg-min: (@screen-md + 1px);
+@screen-xl-min: (@screen-lg + 1px);
+
+// Added for a compatiblity
+// TODO: remove it with all old styles
+@media-xs: @screen-xs;
+@media-sm: @screen-sm;
+@media-md: @screen-md;
+@media-lg: @screen-lg;
+@media-xl: @screen-xl;
+
+// Media queries definitions
+@media-sm-min: e('screen and (min-width: @{screen-sm-min})');
+@media-md-min: e('screen and (min-width: @{screen-md-min})');
+@media-lg-min: e('screen and (min-width: @{screen-lg-min})');
+@media-xl-min: e('screen and (min-width: @{screen-xl-min})');
+
+@media-xxs-max: e('screen and (max-width: @{screen-xxs})');
+@media-xs-max: e('screen and (max-width: @{screen-xs})');
+@media-sm-max: e('screen and (max-width: @{screen-sm})');
+@media-md-max: e('screen and (max-width: @{screen-md})');
+@media-lg-max: e('screen and (max-width: @{screen-lg})');
+
+@media-xs-only: @media-xs-max;
+@media-sm-only: e('screen and (min-width: @{screen-sm-min}) and (max-width: @{screen-sm})');
+@media-md-only: e('screen and (min-width: @{screen-md-min}) and (max-width: @{screen-md})');
+@media-lg-only: e('screen and (min-width: @{screen-lg-min}) and (max-width: @{screen-lg})');
+@media-xl-only: @media-xl-min;
+
+/**
+ * Fonts variables
+ */
+
+// Text coloring
+@text-color: @coal;
+@text-color-secondary: @ash;
+@text-color-disabled: @tin;
+@text-color-accent: @green;
+
+@font-size:             14px;
+@font-size-tiny:        10px;
+@font-size-small:       12px;
+@font-size-large:       16px;
+@font-size-big:         20px;
+@font-size-huge:        24px;
+
+@font-family-work: 'Work Sans', sans-serif;
+@font-family-nexa: 'Nexa', sans-serif;
+
+@font-weigth-light:      200;
+@font-weigth-regular:    400;
+
+@font-weigth-light:      300;
+@font-weigth-extralight: 200;
+@font-weigth-thin:       100;
+
+@font-weigth-medium:     500;
+@font-weigth-semibold:   600;
+@font-weigth-bold:       700;
+
+/**
+ * Grid variables
+ */
+
+@grid-columns: 12;
+@grid-start-size: ~'xs';
+
+// Grid uses mobile-first breakpoints
+// eg. from min-width to inf.
+@grid-min-sizes:
+  sm @media-sm-min,
+  md @media-md-min,
+  lg @media-lg-min,
+  xl @media-xl-min
+;
+
+// But columns re-ordering classes
+// uses breakpoints from 0 to max-width
+@grid-max-sizes:
+  xs @media-xs-max,
+  sm @media-sm-max,
+  md @media-md-max,
+  lg @media-lg-max
+;
+
+// Intervals between min and max breakpoints
+@grid-intervals:
+  sm @media-sm-only,
+  md @media-md-only,
+  lg @media-lg-only
+;
+
+
+// For paddings & margins
+@indent-no:     0;
+@indent-tiny:   0.5rem;
+@indent-small:  1rem;
+@indent-medium: 1.5rem;
+@indent-large:  2rem;
+@indent-big:    3rem;
+@indent-huge:   4rem;
+
+// Base colors palette,
+// uses for classes auto-generation
+@pallete:
+  purple @purple,
+  aqua   @aqua,
+  orange @orange,
+  red    @red,
+  yellow @yellow,
+  green  @green,
+  blue   @blue,
+  white  @white,
+  cotton @cotton,
+
+  tin    @tin,
+  ash    @ash,
+  coal   @coal,
+  black  @black,
+
+  aqua-light @aqua-light,
+  white-ash  @white-ash
+;
