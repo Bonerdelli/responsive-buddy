@@ -4,7 +4,7 @@
   "description": "A lightweight and fully customisable CSS framework, with 12-columns responsive grid",
   "main": "dist/buddy.css",
   "scripts": {
-    "build": "less build --target dist/buddy.css"
+    "build": "lessc ./source/_main.less ./dist/buddy.css"
   },
   "repository": {
     "type": "git",

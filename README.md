@@ -8,3 +8,16 @@ A lightweight and fully customizable LESS-based framework for developing modern 
 - Responsive text classes: aligning, font sizing, font decoration, etc.
 - Mixin for coloring classes generation, based on @palette
 
+## Developing
+
+1. Install LESS globally. A latest NodeJS must be installed. 
+
+```
+npm install less -g
+```
+1. Do some improvements and build a project. LESS will be compiled in `dist/buddy.css` file.
+
+```
+npm run build
+```
+
