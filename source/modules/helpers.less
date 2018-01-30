@@ -1,6 +1,11 @@
 @import '../vars';
 @import '../mixins';
 
+/**
+ * A various helper classes
+ * @author Andrey Nekrasov <bonerdelli@gmail.com>
+ */
+
 // Use to set the color of something
 .generate-palette-classes(color, @pallete, color-);
 // Use to set the background of something
@@ -58,7 +63,7 @@
 }
 
 .inline-blocks-container {
-  & > * {
+  & > * { // lesshint universalSelector: false
     display: inline-block;
   }
 }
@@ -187,7 +192,7 @@
 // Disables text selection
 .no-select {
   &::selection,
-  *::selection {
+  *::selection { // lesshint universalSelector: false
     background: transparent;
     color: inherit;
   }

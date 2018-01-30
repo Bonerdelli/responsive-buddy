@@ -115,7 +115,6 @@
   lg @media-lg-only
 ;
 
-
 // For paddings & margins
 @indent-no:     0;
 @indent-tiny:   0.5rem;
@@ -124,6 +123,17 @@
 @indent-large:  2rem;
 @indent-big:    3rem;
 @indent-huge:   4rem;
+
+// Block indents
+@block-indents:
+  no     @indent-no,
+  tiny   @indent-tiny,
+  small  @indent-small,
+  medium @indent-medium,
+  large  @indent-large,
+  big    @indent-big,
+  huge   @indent-huge
+;
 
 // Base colors palette,
 // uses for classes auto-generation

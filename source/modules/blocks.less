@@ -4,75 +4,63 @@
  * Responsive helpers for blocks
  * Inculdes paddings and margins, hiding, text aligning, etc.
  * @author Andrey Nekrasov <bonerdelli@gmail.com>
- * @package spent-web-travel
- * @version 1.1.0
  */
-
-@block-indents:
-  no     @indent-no,
-  tiny   @indent-tiny,
-  small  @indent-small,
-  medium @indent-medium,
-  large  @indent-large,
-  big    @indent-big,
-  huge   @indent-huge
-;
 
 // Classes for paddings and margins mixin
 .generate-indent-classes(@indent, @value, @size) {
 
   // Block margins
   .@{size}margin-@{indent} {
-    margin: @value !important;
+    margin: @value !important; // lesshint importantRule: false
   }
   .@{size}margin-@{indent}-t {
-    margin-top: @value !important;
+    margin-top: @value !important; // lesshint importantRule: false
   }
   .@{size}margin-@{indent}-r {
-    margin-right: @value !important;
+    margin-right: @value !important; // lesshint importantRule: false
   }
   .@{size}margin-@{indent}-b {
-    margin-bottom: @value !important;
+    margin-bottom: @value !important; // lesshint importantRule: false
   }
   .@{size}margin-@{indent}-l {
-    margin-left: @value !important;
+    margin-left: @value !important; // lesshint importantRule: false
   }
   .@{size}margin-@{indent}-v,
   .@{size}margin-@{indent}-tb {
-    margin-top: @value !important;
-    margin-bottom: @value !important;
+    margin-top: @value !important; // lesshint importantRule: false
+    margin-bottom: @value !important; // lesshint importantRule: false
   }
   .@{size}margin-@{indent}-h,
   .@{size}margin-@{indent}-rl {
-    margin-right: @value !important;
-    margin-left: @value !important;
+    margin-right: @value !important; // lesshint importantRule: false
+    margin-left: @value !important; // lesshint importantRule: false
   }
 
   // Block paddings
   .@{size}padding-@{indent} {
-    padding: @value !important;
+    padding: @value !important; // lesshint importantRule: false
   }
   .@{size}padding-@{indent}-t {
-    padding-top: @value !important;
+    padding-top: @value !important; // lesshint importantRule: false
   }
   .@{size}padding-@{indent}-r {
-    padding-right: @value !important;
+    padding-right: @value !important; // lesshint importantRule: false
   }
   .@{size}padding-@{indent}-b {
-    padding-bottom: @value !important;
+    padding-bottom: @value !important; // lesshint importantRule: false
   }
   .@{size}padding-@{indent}-l {
-    padding-left: @value !important;
+    padding-left: @value !important; // lesshint importantRule: false
   }
   .@{size}padding-@{indent}-v,
   .@{size}padding-@{indent}-tb {
-    padding-top: @value !important;
-    padding-bottom: @value !important;
+    padding-top: @value !important; // lesshint importantRule: false
+    padding-bottom: @value !important; // lesshint importantRule: false
   }
   .@{size}padding-@{indent}-h,
   .@{size}padding-@{indent}-rl {
-    padding-right: @value !important;
-    padding-left: @value !important;
+    padding-right: @value !important; // lesshint importantRule: false
+    padding-left: @value !important; // lesshint importantRule: false
   }
 
 }
@@ -80,7 +68,7 @@
 // Responsive visibility mixin
 .generate-visibility-classes(@size) {
   .hide-@{size} {
-    display: none !important;
+    display: none !important; // lesshint importantRule: false
   }
 }
 
@@ -88,16 +76,16 @@
 .generate-text-aligning-classes(@size) {
 
   .text-left@{size} {
-    text-align: left !important;
+    text-align: left !important; // lesshint importantRule: false
   }
   .text-right@{size} {
-    text-align: right !important;
+    text-align: right !important; // lesshint importantRule: false
   }
   .text-center@{size} {
-    text-align: center !important;
+    text-align: center !important; // lesshint importantRule: false
   }
   .text-nowrap@{size} {
-    white-space: nowrap !important;
+    white-space: nowrap !important; // lesshint importantRule: false
   }
 
 }
