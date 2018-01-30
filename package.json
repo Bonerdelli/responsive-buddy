@@ -1,6 +1,6 @@
 {
   "name": "responsive-buddy",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "description": "A lightweight and fully customisable CSS framework, based on 12-columns responsive grid",
   "main": "dist/buddy.min.css",
   "scripts": {
