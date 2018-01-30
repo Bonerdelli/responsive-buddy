@@ -1,12 +1,14 @@
 {
   "name": "responsive-buddy",
   "version": "1.1.0",
-  "description": "A lightweight and fully customisable CSS framework, with 12-columns responsive grid",
+  "description": "A lightweight and fully customisable CSS framework, based on 12-columns responsive grid",
   "main": "dist/buddy.min.css",
   "scripts": {
-    "build": "lessc ./source/_main.less ./dist/buddy.css",
-    "build-min": "lessc --autoprefix --clean-css='--s1 --advanced' ./source/_main.less ./dist/buddy.min.css",
-    "build-all": "npm run build && npm run build-min"
+    "build-dist": "lessc ./source/main.less ./dist/buddy.css",
+    "build-dist-min": "lessc --autoprefix --clean-css='--s1 --advanced' ./source/main.less ./dist/buddy.min.css",
+    "build-css": "for file in ./source/modules/*.less; do lessc --source-map --strict-imports $file `pwd`/build/`basename -s .less $file`.css; done",
+    "build": "npm run build-dist && npm run build-dist-min",
+    "clean": "rm ./build/*.css ./build/*.map"
   },
   "repository": {
     "type": "git",
