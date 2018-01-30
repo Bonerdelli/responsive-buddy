@@ -11,56 +11,56 @@
 
   // Block margins
   .@{size}margin-@{indent} {
-    margin: @value;
+    margin: @value !important; // lesshint importantRule: false
   }
   .@{size}margin-@{indent}-t {
-    margin-top: @value;
+    margin-top: @value !important; // lesshint importantRule: false
   }
   .@{size}margin-@{indent}-r {
-    margin-right: @value;
+    margin-right: @value !important; // lesshint importantRule: false
   }
   .@{size}margin-@{indent}-b {
-    margin-bottom: @value;
+    margin-bottom: @value !important; // lesshint importantRule: false
   }
   .@{size}margin-@{indent}-l {
-    margin-left: @value;
+    margin-left: @value !important; // lesshint importantRule: false
   }
   .@{size}margin-@{indent}-v,
   .@{size}margin-@{indent}-tb {
-    margin-top: @value;
-    margin-bottom: @value;
+    margin-top: @value !important; // lesshint importantRule: false
+    margin-bottom: @value !important; // lesshint importantRule: false
   }
   .@{size}margin-@{indent}-h,
   .@{size}margin-@{indent}-rl {
-    margin-right: @value;
-    margin-left: @value;
+    margin-right: @value !important; // lesshint importantRule: false
+    margin-left: @value !important; // lesshint importantRule: false
   }
 
   // Block paddings
   .@{size}padding-@{indent} {
-    padding: @value;
+    padding: @value !important; // lesshint importantRule: false
   }
   .@{size}padding-@{indent}-t {
-    padding-top: @value;
+    padding-top: @value !important; // lesshint importantRule: false
   }
   .@{size}padding-@{indent}-r {
-    padding-right: @value;
+    padding-right: @value !important; // lesshint importantRule: false
   }
   .@{size}padding-@{indent}-b {
-    padding-bottom: @value;
+    padding-bottom: @value !important; // lesshint importantRule: false
   }
   .@{size}padding-@{indent}-l {
-    padding-left: @value;
+    padding-left: @value !important; // lesshint importantRule: false
   }
   .@{size}padding-@{indent}-v,
   .@{size}padding-@{indent}-tb {
-    padding-top: @value;
-    padding-bottom: @value;
+    padding-top: @value !important; // lesshint importantRule: false
+    padding-bottom: @value !important; // lesshint importantRule: false
   }
   .@{size}padding-@{indent}-h,
   .@{size}padding-@{indent}-rl {
-    padding-right: @value;
-    padding-left: @value;
+    padding-right: @value !important; // lesshint importantRule: false
+    padding-left: @value !important; // lesshint importantRule: false
   }
 
 }
@@ -68,7 +68,7 @@
 // Responsive visibility mixin
 .generate-visibility-classes(@size) {
   .hide-@{size} {
-    display: none;
+    display: none !important; // lesshint importantRule: false
   }
 }
 
@@ -76,16 +76,16 @@
 .generate-text-aligning-classes(@size) {
 
   .text-left@{size} {
-    text-align: left;
+    text-align: left !important; // lesshint importantRule: false
   }
   .text-right@{size} {
-    text-align: right;
+    text-align: right !important; // lesshint importantRule: false
   }
   .text-center@{size} {
-    text-align: center;
+    text-align: center !important; // lesshint importantRule: false
   }
   .text-nowrap@{size} {
-    white-space: nowrap;
+    white-space: nowrap !important; // lesshint importantRule: false
   }
 
 }
