@@ -6,13 +6,13 @@
     "bonerdelli <bonerdelli@gmail.com>",
     "Artemiy Egorov <artemiy@spentapp.com>"
   ],
-  "description": "A lightweight and fully customisable CSS framework, with 12-columns responsive grid",
+  "description": "A lightweight and fully customisable CSS framework, based on 12-columns responsive grid",
   "main": "dist/buddy.min.css",
   "keywords": [
-    "CSS framework",
-    "LESS framework",
-    "CSS grid",
-    "LESS grid",
+    "css framework",
+    "less framework",
+    "css grid",
+    "less grid",
     "responsive grid",
     "12-columns grid",
     "responsive helpers",
