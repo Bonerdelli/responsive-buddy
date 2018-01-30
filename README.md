@@ -20,6 +20,45 @@ npm install --save-dev responsive-buddy
 
 As advanced option, you can include LESS sources in your project build system. Then you can override variables from `source/vars.less` and customize framework for your needs.
 
+## Responsive
+
+By default following breakpoints are used:
+
+```
+@screen-xs: 400px;
+@screen-sm: 560px;
+@screen-md: 780px;
+@screen-lg: 1040px;
+@screen-xl: 1440px;
+```
+
+You can override them for your project needs. Or add a new one, a minimal modification will be needed for `vars.less`.
+
+### Breakpoints scheme
+
+Unlike of most popular frameworks, this is breakpoint for maximal screen sizes.
+I.e. `@screen-sm` breakpoint limiting upper bound of width range for `sm` screen sizes. In this example lower bound for `sm` range calculated as `xs` breakpoint size plus 1 pixel. Lower bound for `xs` range is 0, upper bound for `xl` is unlimited.
+
+```
+                xs         sm          md           lg              xl
+ _______________|__________|___________|____________|_______~_______|___________
+ 0 pixels       400        560         780          1040            1440   +inf.
+```
+
+### Prefixes
+
+Almost every class... <-----
+Classes from `blocks` and `helpers` modules can be augmented with responsive prefix. There is a three type of prefixes.
+
+1. Limiting minimal width (mobile-first style): `{breakpoint}-{class}`
+In this case `class` will be applied for screen sizes from 0px (CSS-pixels) to given `breakpoint`.
+
+1. Limiting maximal width (non mobile-first style): `{breakpoint}-max-{class}`
+In this case `class` will be applied for screen sizes greater that given `breakpoint` size.
+
+1. Limiting width range by top breakpoint: `{breakpoint}-only-{class}`
+`Class` will be limited by screens with sizes less that given `breakpoint` size and greater that previous breakpoint or 0px if `breakpoint` was a first one. For example `sm-only-text-right` will change text aligning from start of `sm` breakpoint to end, that calculated as `md` size minus 1 pixel.
+
 ## Developing
 
 1. NodeJS must be installed. Install LESS and Clean CSS plugin globally.
