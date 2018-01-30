@@ -35,20 +35,14 @@
 @screen-md-min: (@screen-sm + 1px);
 @screen-lg-min: (@screen-md + 1px);
 @screen-xl-min: (@screen-lg + 1px);
-
-// Added for a compatiblity
-// TODO: remove it with all old styles
-@media-xs: @screen-xs;
-@media-sm: @screen-sm;
-@media-md: @screen-md;
-@media-lg: @screen-lg;
-@media-xl: @screen-xl;
+@screen-xxl-min: (@screen-xl + 1px);
 
 // Media queries definitions
 @media-sm-min: e('screen and (min-width: @{screen-sm-min})');
 @media-md-min: e('screen and (min-width: @{screen-md-min})');
 @media-lg-min: e('screen and (min-width: @{screen-lg-min})');
 @media-xl-min: e('screen and (min-width: @{screen-xl-min})');
+@media-xxl-min: e('screen and (min-width: @{screen-xxl-min})');
 
 @media-xs-max: e('screen and (max-width: @{screen-xs})');
 @media-sm-max: e('screen and (max-width: @{screen-sm})');
@@ -59,7 +53,8 @@
 @media-sm-only: e('screen and (min-width: @{screen-sm-min}) and (max-width: @{screen-sm})');
 @media-md-only: e('screen and (min-width: @{screen-md-min}) and (max-width: @{screen-md})');
 @media-lg-only: e('screen and (min-width: @{screen-lg-min}) and (max-width: @{screen-lg})');
-@media-xl-only: @media-xl-min;
+@media-xl-only: e('screen and (min-width: @{screen-xl-min}) and (max-width: @{screen-xl})');
+@media-xxl-only: @media-xxl-min;
 
 /**
  * Fonts variables
