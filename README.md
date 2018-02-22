@@ -22,26 +22,24 @@ As advanced option, you can include LESS sources in your project build system. T
 
 ## Responsive
 
-By default following breakpoints are used:
+Responsive Buddy is trully a responsive framework. By default the following screen widths breakpoints are used:
 
 ```
-@screen-xs: 400px;
-@screen-sm: 560px;
-@screen-md: 780px;
-@screen-lg: 1040px;
-@screen-xl: 1440px;
+xs: 400 pixels
+sm: 560 pixels
+md: 780 pixels
+lg: 1040 pixels
+xl: 1440 pixels
 ```
 
-You can override them for your project needs. Or add a new one, a minimal modification will be needed for `vars.less`.
+You can override them for your project needs. Or add a new one, a minimal modification of `vars.less` will be needed.
 
 ### Breakpoints scheme
 
 Unlike of most popular frameworks, Responsive Buddy use breakpoint that limiting maximal screen sizes. I.e. `@screen-sm` breakpoint limiting upper bound of width range for `sm` screen sizes. In this case lower bound for `sm` range calculated as `xs` breakpoint size plus 1 pixel. Lower bound for `xs` range is 0, upper bound for `xl` is unlimited.
 
 ```
-                xs          sm          md           lg           xl
- ╘══════════════╪═══════════╪═══════════╪════════════╪═════~══════╪═════════════
- 0 pixels      400         560         780          1040         1440      +inf.
+ 0 pixels      400         560         780          1040         1440
  └── screen-xs ─┴ screen-sm ┴ screen-md ┴ screen-lg ─┴ screen-xl ─┴ screen-xxl ─
 ```
 
