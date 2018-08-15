@@ -1,2 +1,6 @@
+[ ] Rewrite readme
+    The trully responsive LESS-framework
+    Every class you can use with responsive prefixes! See a some examples
+
 [ ] добавить поддержку компиляции с префиксом
 [ ] test autoprefixer rules in builder
